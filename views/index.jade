@@ -1,0 +1,32 @@
+extends layout
+
+block body
+  ng-include(src='\'/template/nav.html\'')
+  div#content(ng-view)
+    
+  script(src='js/lib/jquery/jquery-2.0.3.min.js')
+  script(src='js/lib/angular/angular.min.js')
+  script(src='js/lib/angular/angular-sanitize.min.js')
+  script(src='bootstrap/js/bootstrap.min.js')
+  script(src='js/lib/restangular.min.js')
+  script(src='js/lib/underscore.js')
+  script(src='js/lib/ng-table.js')	
+  script(src='js/lib/ng-google-chart.js') 
+  script(src='js/lib/jsapi.js')  
+  script(src='js/util.js')
+
+  script(src='js/app.js')
+  
+  //- factory 
+  script(src='js/factory/dataFctry.js')	
+
+  //- controller
+  script(src='js/controller/eventsCtrl.js')
+  script(src='js/controller/graphCtrl.js') 
+  script(src='js/controller/eventCtrl.js')
+  script(src='js/controller/channelCtrl.js')
+  script(src='js/controller/futureEvntCtrl.js')
+  script(src='js/controller/curationsCtrl.js') 
+
+  //- directives
+  script(src='js/directive/ajaxloader.js')

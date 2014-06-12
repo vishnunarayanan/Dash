@@ -1,0 +1,58 @@
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 800px; 
+    height: 400px;
+}
+
+.even {
+  background-color: blue;
+}
+
+.active {
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  padding:5px;
+}
+
+.in-active {
+  background-color: #BD362F;
+  color: white;
+  border-radius: 5px;
+  padding:5px;
+}
+
+.table th, .table td{
+	font-size: 12px;
+}
+
+input{
+	margin-bottom: 0px !important;
+}
+
+.loading-container {
+    position: relative;
+}
+.loading-container .loading:before, .loading-container .loading:after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 50px;
+    min-width: 50px;
+}
+.loading-container .loading:before {
+    background-color: #CCCCCC;
+    opacity: 0.5;
+}
+.loading-container .loading:after {
+    background-image: url('/img/301.GIF');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#events .btn-group{
+  display:none;
+}

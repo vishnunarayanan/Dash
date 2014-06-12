@@ -1,0 +1,25 @@
+<!-- template -->
+
+<div style="float:left">
+    <div style="float:left;margin-left:12px" ng-controller="GraphCtrl" ng-include="'/template/pie.html'">
+    </div>
+
+    <div style="float:left;margin-left:12px" ng-controller="ChannelCtrl" ng-include="'/template/bar.html'">
+    </div>
+
+    <div style="float:left;margin-left:12px" ng-controller="FutureEventCtrl" ng-include="'/template/bar.html'">
+    </div>
+</div>
+
+<div style="float:left;margin-top:30px">
+
+    <div style="float :left;width:800px;margin:12px" ng-controller="EventsCtrl" ng-include="'/template/events.html'">
+    </div>
+
+    <div style="float :left;width:800px;margin:12px" ng-controller="CurationsCtrl" ng-include="'/template/curations.html'">
+    </div>
+
+</div>
+
+<div style="float :left;width:800px;margin:12px;clear:both" ng-controller="EventCtrl" ng-include="'/template/event.html'">
+</div>

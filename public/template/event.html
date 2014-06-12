@@ -1,0 +1,111 @@
+<style type="text/css">
+#event {
+    border:1px solid #E7E7E7;
+    border-radius: 4px 4px 4px 4px;
+    padding : 5px;
+}
+#event #bopis{
+    margin-left: 20px;
+}
+#event #bopis a{
+    border: 1px solid;
+    padding: 3px;
+}
+#event #bopis a:hover,#event #bopis a:focus{
+    text-decoration: none;  
+}
+</style>
+
+<div ng-show="show" id="event" class="widget wgreen" loading-container="loading">
+    <!-- Header -->
+    <div class="widget-head">
+        <div class="pull-left">
+            {{event.name}}
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="widget-content">
+        <table class="table table-bordered ">
+            <tbody>
+                <tr>
+                    <td class="liang_bold nowrap">ID</td>
+                    <td>
+                        {{event.id}}
+                        <span id="bopis" ng-show="isProd">
+                        <a href="http://stf-agg-phx-001.vip.ebay.com:9090/query?Vr=0.1&Qy=AND(EQ(ATTR(rpp_cid),NAME({{event.id}})), EQ(ATTR(4128),2))&Fl=ItemID&Hx=no&Nr=1000" target="_blank">MAP Items</a>
+                        <a href="http://stf-agg-phx-001.vip.ebay.com:9090/query?Vr=0.1&Qy=AND(EQ(ATTR(rpp_cid),NAME({{event.id}})), NE(ATTR(8809),2))&Fl=ItemID&Hx=no&Nr=1000" target="_blank">Non-BOPIS</a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="liang_bold nowrap">Public Url</td>
+                    <td><a href="{{event.url}}" target="_blank">{{event.name}}</a></td>
+                </tr>
+                <tr>
+                    <td class="liang_bold nowrap">Name</td>
+                    <td>{{event.name}}</td>
+                </tr>
+                <tr ng-show="isProd">
+                    <td class="liang_bold nowrap">Metrics</td>
+                    <td><a href="{{metricLink}}{{event.id}}" target="_blank">Metrics</a></td>
+                </tr>
+                <tr>
+                    <td class="liang_bold nowrap">Scope</td>
+                    <td>{{event.scope}}</td>
+                </tr>
+                <tr>
+                    <td class="liang_bold nowrap">Mongo Item Count</td>
+                    <td>{{itemCount}}</td>
+                </tr>
+                <tr>
+                    <td class="liang_bold nowrap">Indexed Item Count</td>
+                    <td>
+                        <span style="padding-right: 20px;">{{indexCount}}</span>
+                        <button ng-click="forceClassify($event)" ng-show="isCountNoMatch" type="button" class="btn btn-info btn-xs">Force Classify</button>
+                    </td>
+                </tr>
+                <tr ng-show="isCountNoMatch">
+                    <td class="liang_bold nowrap">Stale Item Ids.
+                    <div style="margin-top:10px">Item Ids can be 
+                    <ul style="color:red">
+                    <li> Mongo Item count > Indexed Item count(Click Force Classify)</li>
+                    <li> MSKU / Duplicate (Click Force remove msku/duplicate)</li>
+                    <li> Not present in Curation (Click Force remove msku/duplicate)</li>
+                    <li> Sold out / Seller ended </li>
+                    </ul>
+                    </div></td>
+
+                    <td>
+                        <textarea readonly class="field span4" id="textarea" rows="6" placeholder="Stale Item Ids">{{staleItemIds}}</textarea>
+                        <div style="margin-top: 15px;">
+                            <!-- <button ng-click="forceDelete($event)" ng-show="isCountNoMatch" type="button" class="btn btn-info btn-xs">Force Delete</button> -->
+                            <button ng-click="forceClassify($event)" ng-show="isCountNoMatch" type="button" class="btn btn-info btn-xs">Force msku/duplicate</button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="liang_bold nowrap">Item Visibility</td>
+                    <td>
+                        <div>
+                            <span class="label label-danger">{{visibility}}</span>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr ng-show="isIVFItemsShowing">
+                    <td class="liang_bold nowrap">Item Visibility Conflicting Item Ids</td>
+                    <td>
+                        <div loading-container="ivfloading">
+                            <textarea readonly class="field span4" id="textarea" rows="6" placeholder="Loading...">{{conflictItemIds}}</textarea>
+                            <button ng-click="forceIVF($event)" ng-show="isConflictIVF" type="button" class="btn btn-info btn-xs">Force ivf</button>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

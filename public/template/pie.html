@@ -1,0 +1,10 @@
+<div id='pie' loading-container="loading">
+    <h4>{{heading}}</h4>
+    <div ng-show="true" ng-bind-html-unsafe="error">
+    </div>
+    
+    <div ng-show="!error">
+    	<div id="chart" google-chart chart="chart" state="state" />
+    </div>
+    
+</div>

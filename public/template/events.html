@@ -1,0 +1,65 @@
+<style type="text/css">
+#events {
+    border:1px solid #E7E7E7;
+    border-radius: 4px 4px 4px 4px;
+    padding : 5px;
+    min-height:520px;
+}
+#events .btn-group {
+    display: none;
+}
+
+#events .pagination{
+    margin: 0px;
+}
+#events .limit{
+    width: 100px;
+    word-wrap: break-word;
+}
+
+#events .slimit{
+    width: 105px;
+    word-wrap: break-word;
+}
+
+</style>
+
+<div id="events" loading-container="loading">
+    <div style="overflow: auto;">
+        <h4>{{prefix}} {{heading}}</h4>
+
+        <div class="input-group" style="width:700px" ng-show="!error">
+            <input type="text" class="form-control" ng-model="tableParams.filter" style="width:200px">
+            <button type="button" class="btn btn-info" ng-click="clear()" style="margin-left:10px">Clear</button>
+        </div>
+
+    </div>
+    <div ng-show="true" ng-bind-html-unsafe="error">
+    </div>
+
+    <table ng-table="tableParams" class="table table-hover" ng-show="!error">
+        <tr ng-repeat="event in events | filter:search" ng-class="{success:event.selected}">
+            <td style="width: 10%; text-align: center;" data-title="'id'">
+                <a href="{{eventLink}}{{event.id}}" target="_blank">{{event.id}}</a>
+            </td>
+            <td style="width: 10%; text-align: center;" data-title="'curation Id'">
+                <a href="{{curationLink}}{{event.curationId}}" target="_blank">{{event.curationId}}</a>
+            </td>
+
+            <td style="width: 5%;" data-title="'More Details'" ng-click='select(event)'>
+                <button class="btn btn-default btn-xs">More Details</button>
+            </td>
+
+            <td style="width: 50%; text-align: center;" data-title="'name'">
+                <div class="limit">{{event.name}}</div>
+            </td>
+            <td style="width: 5%; text-align: center;" data-title="'active'">
+                <span ng-class="{ 'active': event.active ,'in-active' : !event.active}">{{event.active}}</span>
+            </td>
+            <td style="width: 20%; text-align: center;" data-title="'user'">
+                <div class="slimit">{{event.user}}</div>
+            </td>
+
+        </tr>
+    </table>
+</div>

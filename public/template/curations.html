@@ -1,0 +1,65 @@
+<style type="text/css">
+#curations {
+    border:1px solid #E7E7E7;
+    border-radius: 4px 4px 4px 4px;
+    padding : 5px;
+    min-height:520px;
+}
+#curations .btn-group {
+    display: none;
+}
+#curations .pagination {
+    margin: 0px;
+}
+
+#curations .limit{
+    width: 233px;
+    word-wrap: break-word;
+}
+
+#curations .slimit{
+    width: 105px;
+    word-wrap: break-word;
+}
+
+
+</style>
+
+<div id="curations" loading-container="loading">
+    <div style="overflow: auto;">
+        <h4>{{pieSelected.message}} {{heading}}</h4>
+
+        <div class="input-group" style="width:700px" ng-show="error == undefined">
+            <input type="text" class="form-control" ng-model="tableParams.filter" style="width:200px">
+            <button type="button" class="btn btn-info" ng-click="clear()" style="margin-left:10px">Clear</button>
+        </div>
+
+    </div>
+
+    <div ng-show="true" ng-bind-html-unsafe="error">
+    </div>
+
+    <table ng-table="tableParams" class="table table-hover" ng-show="error == undefined">
+        <tr ng-repeat="curation in curations | filter:search"  ng-class="{danger:curation.selected}">
+            <td style="width: 5%;text-align: center;" data-title="'id'">
+                <a href="{{curationLink}}{{curation.id}}" target="_blank">{{curation.id}}</a>
+            </td>
+            <td style="width: 5%;" data-title="'Find Event'">
+                <button class="btn btn-default btn-xs" ng-click='select(curation)'>Find Event</button>
+            </td>
+            <td style="width: 60%;text-align: center;" data-title="'name'">
+             <div class="limit">{{curation.name}}</div>
+            </td>
+            <td style="width: 15%;text-align: center;" data-title="'created-user'">
+                 <div class="slimit">{{curation.createdUser}}</div>
+            </td>
+            <td style="width: 15%;text-align: center;" data-title="'updated-user'">
+                <div class="slimit">{{curation.updatedUser}}</div>
+            </td>
+        </tr>
+    </table>
+
+    <div>
+    </div>
+
+</div>
